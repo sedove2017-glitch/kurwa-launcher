@@ -1,5 +1,9 @@
 # Сайт Kurwa Launcher
 
+**Живой адрес: https://sedove2017-glitch.github.io/kurwa-launcher/**
+(репозиторий: https://github.com/sedove2017-glitch/kurwa-launcher,
+сборки: https://github.com/sedove2017-glitch/kurwa-launcher/releases)
+
 Статический лендинг без сборщика: чистые HTML, CSS и JS. Открывается двойным
 кликом по `index.html`, работает на любом бесплатном статическом хостинге.
 
@@ -92,3 +96,8 @@ window.KURWA_CONFIG = {
 2. Загрузить их в новый GitHub Release с тегом версии.
 3. Обновить `setupUrl` / `portableUrl` и `version` в `site/config.js`.
 4. При желании обновить тексты версии в `index.html` (они статические).
+5. Запушить изменения в репозиторий сайта — Pages пересоберётся за 1–2 минуты.
+
+GitHub Pages кеширует файлы на 10 минут (`Cache-Control: max-age=600`). Если после
+обновления видишь старые ссылки — открой сайт с `Ctrl+F5` или подожди пару минут.
+
