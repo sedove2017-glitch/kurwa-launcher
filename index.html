@@ -1,0 +1,628 @@
+﻿<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kurwa Launcher — зимний лаунчер Minecraft 1.21.4</title>
+    <meta
+      name="description"
+      content="Kurwa Launcher — тёмный лаунчер Minecraft с анимированными фонами, снегом, модами в один клик и настоящим запуском 1.21.4 (Vanilla и Fabric). Java 21 скачивается сама."
+    />
+    <meta name="theme-color" content="#05080f" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Kurwa Launcher — зимний лаунчер Minecraft" />
+    <meta
+      property="og:description"
+      content="Живые фоны, снег, моды в один клик и настоящий запуск Minecraft 1.21.4."
+    />
+    <meta property="og:image" content="assets/screens/home.jpg" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="preload" as="image" href="assets/posters/city.jpg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="snow" aria-hidden="true"></canvas>
+
+    <header class="top" id="top">
+      <div class="wrap top__inner">
+        <a class="brand" href="#top" aria-label="Kurwa Launcher — на главную">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="1" y="1" width="30" height="30" rx="9" fill="#0a1422" stroke="#26405c" />
+            <g stroke="#ffb35c" stroke-width="1.7" stroke-linecap="round">
+              <path d="M16 6.5v19M7.8 11.2l16.4 9.6M7.8 20.8l16.4-9.6" />
+              <path d="M16 6.5l-2.4 2M16 6.5l2.4 2M16 25.5l-2.4-2M16 25.5l2.4-2" />
+              <path d="M7.8 11.2l2.9.6M7.8 11.2l.6-2.9M24.2 20.8l-2.9-.6M24.2 20.8l-.6 2.9" />
+              <path d="M7.8 20.8l2.9-.6M7.8 20.8l.6 2.9M24.2 11.2l-2.9.6M24.2 11.2l-.6-2.9" />
+            </g>
+          </svg>
+          <span class="brand__text">KURWA <em>LAUNCHER</em></span>
+        </a>
+
+        <nav class="nav" id="nav" aria-label="Основное меню">
+          <a href="#features">Возможности</a>
+          <a href="#backgrounds">Фоны</a>
+          <a href="#mods">Моды</a>
+          <a href="#install">Установка</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <div class="top__actions">
+          <span class="ver">v0.1.0</span>
+          <a class="btn btn--soft btn--sm" href="#download">Скачать</a>
+          <button
+            class="burger"
+            id="burger"
+            type="button"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+            aria-controls="nav"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <video
+          class="hero__video"
+          src="assets/video/city.mp4"
+          poster="assets/posters/city.jpg"
+          autoplay
+          muted
+          loop
+          playsinline
+          aria-hidden="true"
+        ></video>
+        <div class="hero__veil" aria-hidden="true"></div>
+
+        <div class="wrap hero__inner">
+          <p class="eyebrow">
+            <span class="dot"></span>
+            Minecraft 1.21.4 · Vanilla и Fabric
+          </p>
+          <h1>Minecraft,<br /><span class="grad">но по-зимнему</span></h1>
+          <p class="lead">
+            Тёмный лаунчер с живыми фонами, снегом и модами в один клик. Настоящий запуск
+            1.21.4, Java 21 скачивается сама, профиль работает без лицензии.
+          </p>
+
+          <div class="hero__cta">
+            <a
+              class="btn btn--primary"
+              href="downloads/KurwaLauncher-setup-0.1.0.exe" data-download="setup"
+              download
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14" />
+              </svg>
+              <span>
+                <strong>Скачать установщик</strong>
+                <small>Windows · x64 · 146 МБ</small>
+              </span>
+            </a>
+
+            <a
+              class="btn btn--soft"
+              href="downloads/KurwaLauncher-0.1.0-portable.exe" data-download="portable"
+              download
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              </svg>
+              <span>
+                <strong>Portable-версия</strong>
+                <small>Без установки · 128 МБ</small>
+              </span>
+            </a>
+          </div>
+
+          <p class="hero__note">
+            Сборка v0.1.0 · Windows 10/11 · Java 21 скачается при первом запуске
+          </p>
+        </div>
+
+        <div class="wrap">
+          <figure class="shot-frame reveal">
+            <img
+              src="assets/screens/home.jpg"
+              width="1320"
+              height="860"
+              alt="Главный экран Kurwa Launcher: профиль, выбор версии, кнопка «Играть», моды и новости"
+            />
+            <figcaption>
+              Главный экран: профиль, версия, загрузчик и список модов — всё на одном экране
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="wrap">
+          <div class="section__head reveal">
+            <p class="eyebrow"><span class="dot"></span>Возможности</p>
+            <h2>Всё, что нужно, уже внутри</h2>
+            <p>Никаких десятков кнопок и настроек «как в 2014». Только то, чем реально пользуются.</p>
+          </div>
+
+          <div class="grid grid--3">
+            <article class="card reveal">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="m10 8.5 6 3.5-6 3.5z" />
+                </svg>
+              </span>
+              <h3>Настоящий запуск</h3>
+              <p>
+                Minecraft 1.21.4 без заглушек: client.jar, библиотеки и ассеты качает
+                <code>minecraft-launcher-core</code>.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M21 8v8l-9 5-9-5V8l9-5z" />
+                  <path d="M3.3 7.3 12 12l8.7-4.7M12 22V12" />
+                </svg>
+              </span>
+              <h3>Моды в один клик</h3>
+              <p>
+                Список <code>.jar</code> прямо на главной: включил или выключил — и всё.
+                Папка <code>mods</code> создаётся сама.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2v20M2 12h20" />
+                  <path d="m20 16-4-4 4-4M4 8l4 4-4 4M16 4l-4 4-4-4M8 20l4-4 4 4" />
+                </svg>
+              </span>
+              <h3>Четыре зимних фона</h3>
+              <p>
+                Winter City, Night Forest, Silent Night и Lady Anna. Смена — плавным
+                кроссфейдом, длительность настраивается.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="3" />
+                  <circle cx="8.5" cy="8.5" r="1.6" />
+                  <path d="m21 15-5-5L5 21" />
+                </svg>
+              </span>
+              <h3>Свои обои</h3>
+              <p>
+                Добавь любое видео <code>mp4</code> или <code>webm</code> до 400 МБ —
+                лаунчер сам сделает постер и поставит его на фон.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="6" y="6" width="12" height="12" rx="2" />
+                  <rect x="9.5" y="9.5" width="5" height="5" rx="1" />
+                  <path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3M19 9h3m-3 6h3" />
+                </svg>
+              </span>
+              <h3>Java 21 сама</h3>
+              <p>
+                Temurin JRE 21 скачивается в папку лаунчера при первом запуске.
+                Ставить Java вручную не нужно.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 21c0-4 4-6 8-6s8 2 8 6" />
+                </svg>
+              </span>
+              <h3>Офлайн-профиль</h3>
+              <p>
+                Ник и UUID генерируются локально — одиночная игра доступна без
+                Microsoft-аккаунта и лицензии.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tint" id="backgrounds">
+        <div class="wrap">
+          <div class="section__head reveal">
+            <p class="eyebrow"><span class="dot"></span>Фоны</p>
+            <h2>Четыре зимы на выбор</h2>
+            <p>
+              Живое видео вместо статичной картинки. Нажми на карточку, чтобы посмотреть
+              сцену в движении.
+            </p>
+          </div>
+
+          <div class="bg-grid">
+            <button
+              class="bg-card reveal"
+              type="button"
+              data-title="Winter City"
+              data-video="assets/video/city.mp4"
+            >
+              <img src="assets/posters/city.jpg" alt="Winter City — зимний город в сумерках" />
+              <span class="bg-card__shade"></span>
+              <span class="bg-card__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m9 6 9 6-9 6z" /></svg>
+              </span>
+              <span class="bg-card__caption">
+                <strong>Winter City</strong>
+                <small>Аниме · сумерки</small>
+              </span>
+            </button>
+
+            <button
+              class="bg-card reveal"
+              type="button"
+              data-title="Night Forest"
+              data-video="assets/video/forest.mp4"
+            >
+              <img src="assets/posters/forest.jpg" alt="Night Forest — ночной лес" />
+              <span class="bg-card__shade"></span>
+              <span class="bg-card__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m9 6 9 6-9 6z" /></svg>
+              </span>
+              <span class="bg-card__caption">
+                <strong>Night Forest</strong>
+                <small>Природа · ночь</small>
+              </span>
+            </button>
+
+            <button
+              class="bg-card reveal"
+              type="button"
+              data-title="Silent Night"
+              data-video="assets/video/night.mp4"
+            >
+              <img src="assets/posters/night.jpg" alt="Silent Night — снегопад" />
+              <span class="bg-card__shade"></span>
+              <span class="bg-card__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m9 6 9 6-9 6z" /></svg>
+              </span>
+              <span class="bg-card__caption">
+                <strong>Silent Night</strong>
+                <small>Природа · снегопад</small>
+              </span>
+            </button>
+
+            <button
+              class="bg-card reveal"
+              type="button"
+              data-title="Lady Anna"
+              data-video="assets/video/lady.mp4"
+            >
+              <img src="assets/posters/lady.jpg" alt="Lady Anna — аниме-сцена" />
+              <span class="bg-card__shade"></span>
+              <span class="bg-card__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m9 6 9 6-9 6z" /></svg>
+              </span>
+              <span class="bg-card__caption">
+                <strong>Lady Anna</strong>
+                <small>Аниме · Wuthering Waves</small>
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="mods">
+        <div class="wrap split">
+          <div class="split__text reveal">
+            <p class="eyebrow"><span class="dot"></span>Моды</p>
+            <h2>Моды без боли</h2>
+            <p>
+              Скачай <code>.jar</code> с Modrinth или CurseForge, положи в папку
+              <code>mods</code> — и он появится в лаунчере. Выключается одним кликом,
+              без переименований вручную.
+            </p>
+
+            <ul class="checklist">
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-9" /></svg>
+                Список модов с размерами и счётчиком включённых
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-9" /></svg>
+                Кнопка «Открыть папку» создаёт <code>mods</code>, если её нет
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-9" /></svg>
+                Fabric 1.21.4 и предупреждение, если выбран Vanilla
+              </li>
+            </ul>
+
+            <p class="hint">
+              Для модов выбери загрузчик <strong>Fabric</strong> и версию, под которую собран
+              мод. Сейчас стабильно поддерживается 1.21.4.
+            </p>
+          </div>
+
+          <div class="demo reveal" aria-label="Демонстрация списка модов">
+            <div class="demo__head">
+              <span>Моды</span>
+              <span class="demo__hint">демо — попробуй переключить</span>
+            </div>
+
+            <div class="demo__row is-on" role="button" tabindex="0">
+              <span class="demo__switch" aria-hidden="true"></span>
+              <span class="demo__name">Sodium</span>
+              <span class="demo__size">1.2 МБ</span>
+            </div>
+            <div class="demo__row is-on" role="button" tabindex="0">
+              <span class="demo__switch" aria-hidden="true"></span>
+              <span class="demo__name">Iris Shaders</span>
+              <span class="demo__size">3.4 МБ</span>
+            </div>
+            <div class="demo__row is-on" role="button" tabindex="0">
+              <span class="demo__switch" aria-hidden="true"></span>
+              <span class="demo__name">Mod Menu</span>
+              <span class="demo__size">0.9 МБ</span>
+            </div>
+            <div class="demo__row" role="button" tabindex="0">
+              <span class="demo__switch" aria-hidden="true"></span>
+              <span class="demo__name">Xaero's Minimap</span>
+              <span class="demo__size">4.1 МБ</span>
+            </div>
+
+            <div class="demo__foot">
+              <span id="demo-count">3 из 4 включено</span>
+              <span class="demo__link">Открыть папку</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tint" id="custom">
+        <div class="wrap split split--reverse">
+          <figure class="frame reveal">
+            <img
+              src="assets/screens/settings.jpg"
+              width="1320"
+              height="860"
+              alt="Настройки Kurwa Launcher: галерея фонов и плитка «Добавить видео»"
+             
+            />
+          </figure>
+
+          <div class="split__text reveal">
+            <p class="eyebrow"><span class="dot"></span>Персонализация</p>
+            <h2>Своё видео на фон</h2>
+            <p>
+              Надоели встроенные сцены? В настройках есть плитка «Добавить видео»:
+              выбираешь файл — лаунчер копирует его к себе и делает постер из кадра.
+            </p>
+
+            <ul class="checklist">
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-9" /></svg>
+                <code>mp4</code>, <code>webm</code> или <code>m4v</code> до 400 МБ
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-9" /></svg>
+                Постер и превью генерируются автоматически
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-9" /></svg>
+                Удаление в один клик, выбор сохраняется между запусками
+              </li>
+            </ul>
+
+            <p class="hint">
+              Плюс ползунки затемнения и размытия, интенсивность снега и режим «меньше
+              движения» — чтобы атмосфера не мешала читать интерфейс.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="install">
+        <div class="wrap">
+          <div class="section__head reveal">
+            <p class="eyebrow"><span class="dot"></span>Установка</p>
+            <h2>Три шага до игры</h2>
+            <p>Никаких зависимостей и ручных настроек Java.</p>
+          </div>
+
+          <div class="steps">
+            <article class="step reveal">
+              <span class="step__num">01</span>
+              <h3>Скачай установщик</h3>
+              <p>
+                Запусти <code>KurwaLauncher-setup-0.1.0.exe</code> и следуй мастеру.
+                Ярлык появится на рабочем столе.
+              </p>
+            </article>
+
+            <article class="step reveal">
+              <span class="step__num">02</span>
+              <h3>Разреши запуск</h3>
+              <p>
+                Windows может показать «Не удалось проверить издателя» — сборка не подписана.
+                Нажми «Подробнее» → «Выполнить в любом случае».
+              </p>
+            </article>
+
+            <article class="step reveal">
+              <span class="step__num">03</span>
+              <h3>Введи ник и играй</h3>
+              <p>
+                Выбери версию и загрузчик, нажми «Играть». Java и файлы игры скачаются
+                автоматически.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tint" id="faq">
+        <div class="wrap">
+          <div class="section__head reveal">
+            <p class="eyebrow"><span class="dot"></span>FAQ</p>
+            <h2>Частые вопросы</h2>
+          </div>
+
+          <div class="faq reveal">
+            <details>
+              <summary>Нужен ли лицензионный аккаунт?</summary>
+              <p>
+                Для одиночной игры — нет. Лаунчер создаёт локальный профиль: ник и UUID
+                генерируются на месте. Для входа на онлайн-серверы нужен лицензионный
+                Microsoft-аккаунт.
+              </p>
+            </details>
+
+            <details>
+              <summary>Почему Windows предупреждает о неизвестном издателе?</summary>
+              <p>
+                У сборки нет платного сертификата подписи кода, поэтому SmartScreen
+                перестраховывается. Это нормально для небольших лаунчеров: «Подробнее» →
+                «Выполнить в любом случае».
+              </p>
+            </details>
+
+            <details>
+              <summary>Где взять моды и куда их класть?</summary>
+              <p>
+                Modrinth и CurseForge. Скачай версию под Fabric 1.21.4 и положи
+                <code>.jar</code> в папку <code>mods</code> — кнопка «Открыть папку» на
+                главной создаст её и откроет проводник.
+              </p>
+            </details>
+
+            <details>
+              <summary>Сколько выделять оперативной памяти?</summary>
+              <p>
+                По умолчанию 6 ГБ — этого хватает на ваниль и лёгкие моды. Для тяжёлых
+                сборок с шейдерами можно поднять до 8–10 ГБ, если у компьютера есть запас.
+              </p>
+            </details>
+
+            <details>
+              <summary>Чем portable отличается от установщика?</summary>
+              <p>
+                Portable — один exe, который запускается без установки. Данные те же:
+                Java в <code>%APPDATA%\kurwa-launcher</code>, игра в
+                <code>%APPDATA%\.kurwa</code>. Установщик просто добавляет ярлыки.
+              </p>
+            </details>
+
+            <details>
+              <summary>Куда качаются Java и файлы игры?</summary>
+              <p>
+                Java 21 (Temurin) — в <code>%APPDATA%\kurwa-launcher\jre</code>, игра,
+                библиотеки и ассеты — в <code>%APPDATA%\.kurwa</code>. Свои обои — в
+                <code>%APPDATA%\kurwa-launcher\backgrounds</code>.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="download">
+        <div class="wrap">
+          <div class="cta reveal">
+            <p class="eyebrow"><span class="dot"></span>Готов?</p>
+            <h2>Зима уже загружается</h2>
+            <p class="cta__lead">
+              Один клик — и у тебя лаунчер с живыми фонами, модами и настоящим Minecraft
+              1.21.4.
+            </p>
+
+            <div class="cta__actions">
+              <a
+                class="btn btn--primary"
+                href="downloads/KurwaLauncher-setup-0.1.0.exe" data-download="setup"
+                download
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14" />
+                </svg>
+                <span>
+                  <strong>Скачать установщик</strong>
+                  <small>146 МБ · Windows x64</small>
+                </span>
+              </a>
+
+              <a
+                class="btn btn--soft"
+                href="downloads/KurwaLauncher-0.1.0-portable.exe" data-download="portable"
+                download
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                </svg>
+                <span>
+                  <strong>Portable</strong>
+                  <small>128 МБ · без установки</small>
+                </span>
+              </a>
+            </div>
+
+            <p class="cta__note">
+              v0.1.0 · Java 21 скачается автоматически · для одиночной игры лицензия не нужна
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <div class="footer__brand">
+          <span class="brand">
+            <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+              <rect x="1" y="1" width="30" height="30" rx="9" fill="#0a1422" stroke="#26405c" />
+              <g stroke="#ffb35c" stroke-width="1.7" stroke-linecap="round">
+                <path d="M16 6.5v19M7.8 11.2l16.4 9.6M7.8 20.8l16.4-9.6" />
+                <path d="M16 6.5l-2.4 2M16 6.5l2.4 2M16 25.5l-2.4-2M16 25.5l2.4-2" />
+                <path d="M7.8 11.2l2.9.6M7.8 11.2l.6-2.9M24.2 20.8l-2.9-.6M24.2 20.8l-.6 2.9" />
+                <path d="M7.8 20.8l2.9-.6M7.8 20.8l.6 2.9M24.2 11.2l-2.9.6M24.2 11.2l-.6-2.9" />
+              </g>
+            </svg>
+            <span class="brand__text">KURWA <em>LAUNCHER</em></span>
+          </span>
+          <p>Зимний лаунчер Minecraft. Сделано на Electron, React и minecraft-launcher-core.</p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Меню в подвале">
+          <a href="#features">Возможности</a>
+          <a href="#backgrounds">Фоны</a>
+          <a href="#mods">Моды</a>
+          <a href="#faq">FAQ</a>
+          <a href="#download">Скачать</a>
+        </nav>
+
+        <p class="footer__meta">© <span id="year">2026</span> Kurwa Launcher · v0.1.0</p>
+      </div>
+    </footer>
+
+    <dialog class="modal" id="bg-modal" aria-labelledby="bg-title">
+      <div class="modal__head">
+        <h3 id="bg-title">Фон</h3>
+        <button class="modal__close" id="bg-close" type="button" aria-label="Закрыть">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
+        </button>
+      </div>
+      <video id="bg-video" controls playsinline></video>
+    </dialog>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
